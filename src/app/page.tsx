@@ -196,7 +196,7 @@ export default function Home() {
 
       {/* Canvas anchored to bottom */}
       <div className="fixed bottom-0 left-0 right-0 h-[70vh]">
-        <Scene isSpeaking={isSpeaking} visemes={visemes} audioStartTime={audioStartTime} emotion={emotion} />
+        <Scene isSpeaking={isSpeaking} visemes={visemes} audioStartTime={audioStartTime} />
       </div>
 
       {/* Conversation — fixed top-right */}
