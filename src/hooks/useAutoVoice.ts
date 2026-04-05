@@ -4,8 +4,10 @@ export type VoiceStatus = 'idle' | 'listening' | 'recording' | 'processing' | 'd
 
 declare global {
   interface Window {
-    SpeechRecognition: typeof SpeechRecognition;
-    webkitSpeechRecognition: typeof SpeechRecognition;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    SpeechRecognition: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    webkitSpeechRecognition: any;
   }
 }
 
@@ -18,7 +20,8 @@ export function useAutoVoice(
   const mutedRef         = useRef(muted);
   const processingRef    = useRef(false);
   const deniedRef        = useRef(false);           // stops the restart loop on permission denial
-  const recognitionRef   = useRef<SpeechRecognition | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const recognitionRef   = useRef<any>(null);
 
   useEffect(() => { callbackRef.current = onTranscript; }, [onTranscript]);
 
@@ -58,7 +61,7 @@ export function useAutoVoice(
     rec.onstart       = () => { if (!mutedRef.current && !processingRef.current) setStatus('listening'); };
     rec.onspeechstart = () => { if (!mutedRef.current && !processingRef.current) setStatus('recording'); };
 
-    rec.onresult = async (event) => {
+    rec.onresult = async (event: any) => {
       const transcript = event.results[event.results.length - 1][0].transcript.trim();
       if (!transcript) return;
 
@@ -74,7 +77,7 @@ export function useAutoVoice(
       }
     };
 
-    rec.onerror = (event) => {
+    rec.onerror = (event: any) => {
       if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
         // Permission denied — stop the loop immediately
         deniedRef.current = true;
