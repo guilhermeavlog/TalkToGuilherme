@@ -158,7 +158,7 @@ export default function Home() {
         </ul>
         <div className="flex gap-3 mt-5">
           <a
-            href="/resume.pdf"
+            href="/guilherme_loges_resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
@@ -250,7 +250,7 @@ export default function Home() {
           <p className="text-white font-bold text-base leading-snug mt-0.5">Full-Stack Engineer · AI & Real-time Systems</p>
           <div className="flex gap-2 mt-3">
             <a
-              href="/resume.pdf"
+              href="/guilherme_loges_resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
